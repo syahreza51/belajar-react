@@ -1,0 +1,19 @@
+
+#header .overlay.active {
+  display: block;
+  visibility: visible;
+}
+#header .overlay {
+  background: #000;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: .7;
+  z-index: 200;
+  display: none;
+}
+.mt-20{
+  margin-top:20px
+}
