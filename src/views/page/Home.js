@@ -1,54 +1,33 @@
 import React, { Component } from 'react';
+import Product from '../common/Product';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: [
-        {
-          nama: "Dhani",
-          umur: 24,
-          pekerjaan: "Programmer"
-        },
-        {
-          nama: "Yusuf",
-          umur: 28,
-          pekerjaan: "Manajer"
-        },
-        {
-          nama: "Yusuf",
-          umur: 28,
-          pekerjaan: "Manajer"
-        },
-        {
-          nama: "Yusuf",
-          umur: 28,
-          pekerjaan: "Manajer"
-        },
-        {
-          nama: "Yusuf",
-          umur: 28,
-          pekerjaan: "Manajer"
-        },
-        {
-          nama: "Yusuf",
-          umur: 28,
-          pekerjaan: "Manajer"
-        }
-      ]
+      product: []
     }
   }
+  
+  componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(jsonStr => {
+      this.setState({ product: jsonStr });
+      console.log(jsonStr);
+    });
+  }
+
+  deleteArray(id) {
+    alert("Data dengan nama " + id + " Dihapus")
+  }
+
   render() {
     return (
       <div className="container">
         <div className="row">
           {this.state.product.map((data) =>
-            <div className="col-sm-3 mt-20">
-              <div className="shadow" style={{"padding":"10px"}}>
-              Nama : {data.nama}<br/>
-              Umur : {data.umur}
-              </div>
-            </div>
+            <Product key={data.id} dataProduct={data} delete={this.deleteArray} />
           )}
         </div>
       </div>
