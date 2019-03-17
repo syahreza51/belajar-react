@@ -1,5 +1,8 @@
 # Belajar React
 
+### API URL (For testing API)
+https://jsonplaceholder.typicode.com/
+
 ### Development
 
 Instalasi ReactJS
