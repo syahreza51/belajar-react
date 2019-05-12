@@ -5,7 +5,8 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: []
+      product: [],
+      statusProduct: ""
     }
   }
   
@@ -13,8 +14,10 @@ class Home extends Component {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(jsonStr => {
-      this.setState({ product: jsonStr });
-      console.log(jsonStr);
+      this.setState({ 
+        product: jsonStr,
+        statusProduct: 200
+      });
     });
   }
 
@@ -26,8 +29,17 @@ class Home extends Component {
     return (
       <div className="container">
         <div className="row">
-          {this.state.product.map((data) =>
-            <Product key={data.id} dataProduct={data} delete={this.deleteArray} />
+          {this.state.statusProduct === 200 && ( //if conditional. if(statusProduct == 200){
+              this.state.product.map((data) =>
+              <Product key={data.id} dataProduct={data} delete={this.deleteArray} />
+            )
+          )}
+          {this.state.statusProduct === "" && (
+            <div className="center">
+              <div className="spinner-border text-primary" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
+            </div>
           )}
         </div>
       </div>
