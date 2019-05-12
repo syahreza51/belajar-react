@@ -32,6 +32,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Di project directory, Kamu bisa menjalankan Beberapa NPM seperti di bawah ini:
 
+### `npm install`
+
+Untuk menginstall package jika folder node modules
+
 ### `npm start`
 
 Menjalankan Aplikasi pada mode Development.<br>
